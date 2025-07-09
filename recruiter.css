@@ -1,0 +1,258 @@
+/* General Body and Base Styles */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f7fa;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* Improve readability of text */
+    color: #333; /* Standard text color */
+}
+
+/* Header Section */
+.header {
+    background: linear-gradient(to right, #6a5acd, #e26ccf);
+    color: #fff;
+    padding: 30px 20px 20px; /* Add horizontal padding for smaller screens */
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Ensure nothing spills out due to absolute positioning */
+}
+
+.header h1 {
+    margin: 10px 0; /* Adjust margin for h1 */
+    font-size: 2.5em;
+    letter-spacing: 1px;
+    /* On smaller screens, allow font size to scale down */
+    font-size: clamp(1.8em, 5vw, 2.5em);
+}
+
+/* Refresh Button */
+#refreshBtn {
+     
+    right: 20px; /* Adjusted from 30px for better spacing on smaller screens */
+    top: 20px; /* Adjusted from 30px for better spacing */
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out; /* Added transform for hover effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+#refreshBtn:hover {
+    background: linear-gradient(to right, rgb(23, 231, 19), rgb(23, 136, 23));
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+#refreshBtn:active {
+    transform: translateY(0); /* Return to original position on click */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow on active */
+}
+
+/* Applications Container (Main Content Area) */
+#applications-container {
+    margin: 40px auto;
+    width: 95%; /* Increased width slightly for smaller screens */
+    max-width: 1100px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    padding: 20px; /* Reduced padding slightly for better fit on small screens */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Applications Table */
+#applications-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.95em; /* Slightly adjust font size for table readability */
+}
+
+#applications-table th,
+#applications-table td {
+    padding: 12px 10px; /* Slightly reduced padding for table cells */
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+#applications-table th {
+    background: #f0f4f8;
+    color: #2d3e50;
+    font-weight: 600;
+    white-space: nowrap; /* Prevent headers from wrapping if too long */
+}
+
+#applications-table tr:hover {
+    background: #f9fafb;
+}
+
+#applications-table a {
+    color: blueviolet;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#applications-table a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Section */
+.footer {
+    text-align: center;
+    color: white;
+    padding: 18px 20px 10px; /* Added horizontal padding */
+    font-size: 1.1em;
+    font-weight: 700;
+    background: linear-gradient(to right, #6a5acd, #e26ccf);
+    margin-top: 40px;
+}
+
+/* =========================================
+   Responsive Adjustments (Media Queries)
+   ========================================= */
+
+/* For screens smaller than 768px (e.g., tablets in portrait, large phones) */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2em; /* Slightly smaller on tablets */
+    }
+
+    #refreshBtn {
+        position: static; /* Make button static to flow with content */
+        margin: 15px auto 0; /* Center it below the heading */
+        display: block; /* Make it a block element to take full width */
+        width: fit-content; /* Adjust width to content */
+        padding: 12px 25px; /* More generous padding for touch */
+    }
+
+    #applications-container {
+        margin: 30px auto; /* Reduced top/bottom margin */
+        padding: 15px; /* Less padding on container */
+    }
+
+    #applications-table th,
+    #applications-table td {
+        padding: 10px 8px; /* Further reduce table cell padding */
+        font-size: 0.9em; /* Slightly smaller text in table */
+    }
+}
+
+/* For screens smaller than 600px (e.g., most mobile phones) */
+@media (max-width: 600px) {
+    .header {
+        padding: 20px 15px 15px; /* Smaller header padding */
+    }
+
+    .header h1 {
+        font-size: 1.7em; /* Even smaller heading */
+    }
+
+    #refreshBtn {
+        font-size: 0.9em; /* Slightly smaller button text */
+        padding: 10px 20px;
+    }
+
+    #applications-container {
+        width: 98%; /* Almost full width for tiny screens */
+        padding: 10px; /* Minimal padding */
+        margin: 20px auto;
+    }
+
+    /* Table Responsiveness for Small Screens:
+       - This is where tables can break layout. We'll use a common pattern:
+         Make table headers visible as data attributes and stack content.
+       - Note: This requires changes to your HTML structure (adding data-label attributes).
+         If you cannot modify HTML, you might need JavaScript or a different approach
+         (like horizontal scrolling, which is less ideal for user experience).
+    */
+    #applications-table thead {
+        display: none; /* Hide original table headers */
+    }
+
+    #applications-table tr {
+        display: block; /* Make table rows behave like blocks */
+        margin-bottom: 15px; /* Add space between stacked rows */
+        border: 1px solid #ddd; /* Add a border to each "card" row */
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        background: #fff;
+    }
+
+    #applications-table td {
+        display: block; /* Make table cells behave like blocks */
+        text-align: right; /* Align value to the right */
+        border-bottom: 1px dashed #eee; /* Dotted line between fields */
+        position: relative; /* For the pseudo-element label */
+        padding-left: 50%; /* Space for the label */
+        font-size: 0.9em;
+    }
+
+    #applications-table td:last-child {
+        border-bottom: none; /* No border for the last cell in a row */
+    }
+
+    #applications-table td::before {
+        content: attr(data-label); /* Use data-label for the pseudo-element */
+        position: absolute;
+        left: 10px; /* Position the label */
+        width: calc(50% - 20px); /* Adjust width to content */
+        text-align: left; /* Align label to the left */
+        font-weight: 600;
+        color: #555;
+        white-space: nowrap; /* Prevent label from wrapping */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Add ellipsis if label is too long */
+    }
+
+    /* Example of HTML change for the above table responsiveness:
+    <table id="applications-table">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Position</th>
+                <th>Status</th>
+                <th>Date Applied</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Company">Tech Corp</td>
+                <td data-label="Position">Software Engineer</td>
+                <td data-label="Status">Applied</td>
+                <td data-label="Date Applied">2023-01-15</td>
+                <td data-label="Link"><a href="#">View</a></td>
+            </tr>
+            ...
+        </tbody>
+    </table>
+    */
+
+    .footer {
+        font-size: 1em;
+        padding: 15px 10px;
+    }
+}
+
+/* For screens smaller than 400px (very small phones) */
+@media (max-width: 400px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+    #refreshBtn {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+    #applications-container {
+        padding: 8px;
+    }
+    #applications-table td {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+}
